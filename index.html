@@ -349,6 +349,13 @@
   .ci-ico { width:40px; height:40px; border-radius:11px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
   .ci-item-text strong { display:block; font-size:0.83rem; font-weight:800; color:var(--blue-dark); }
   .ci-item-text span { font-size:0.8rem; color:var(--text-muted); }
+  .map-embed-wrap {
+    display:block; position:relative; border-radius:18px; overflow:hidden;
+    box-shadow:0 4px 18px rgba(13,43,94,0.07); margin-bottom:20px;
+    border:1px solid var(--border); transition:all 0.3s;
+  }
+  .map-embed-wrap:hover { box-shadow:var(--shadow); transform:translateY(-2px); }
+  .map-embed { width:100%; height:220px; border:0; display:block; pointer-events:none; }
   .sched-card { background:#fff; border-radius:18px; padding:20px; box-shadow:0 4px 18px rgba(13,43,94,0.07); }
   .sched-card h4 { font-family:'Fredoka One',cursive; font-size:1.05rem; color:var(--blue-dark); margin-bottom:14px; display:flex; align-items:center; gap:7px; }
   .sched-row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--blue-xlight); font-size:0.85rem; }
@@ -754,14 +761,17 @@
       <p class="ci-desc">Contáctanos y con gusto te orientamos sobre disponibilidad, horarios y proceso de inscripción.</p>
       <div class="ci-list">
         <div class="ci-item"><div class="ci-ico" style="background:var(--coral-light)">📍</div><div class="ci-item-text"><strong>Dirección</strong><span>C. Tercera, Guarocuya, Santo Domingo, RD</span></div></div>
-        <div class="ci-item"><div class="ci-ico" style="background:var(--blue-light)">📞</div><div class="ci-item-text"><strong>Teléfono</strong><span>(809) 730-3424</span></div></div>
+        <div class="ci-item"><div class="ci-ico" style="background:var(--blue-light)">📞</div><div class="ci-item-text"><strong>Teléfono</strong><span><a href="tel:8097303424" style="color:var(--text-muted);text-decoration:none">(809) 730-3424</a></span></div></div>
         <div class="ci-item"><div class="ci-ico" style="background:var(--green-light)">💬</div><div class="ci-item-text"><strong>WhatsApp</strong><span><a href="https://wa.me/18492202209?text=Quiero%20mas%20informacion%20sobre%3A%20" target="_blank" style="color:var(--text-muted);text-decoration:none">(849) 220-2209</a></span></div></div>
-        <div class="ci-item"><div class="ci-ico" style="background:var(--yellow-light)">✉️</div><div class="ci-item-text"><strong>Email</strong><span>centrosilera@gmail.com</span></div></div>
+        <div class="ci-item"><div class="ci-ico" style="background:var(--yellow-light)">✉️</div><div class="ci-item-text"><strong>Email</strong><span><a href="mailto:centrosilera@gmail.com" style="color:var(--text-muted);text-decoration:none">centrosilera@gmail.com</a></span></div></div>
       </div>
+      <a class="map-embed-wrap" href="https://www.google.com/maps/place/Centro+pedagogico+infantil+silera/@18.4610525,-69.9742141,17.79z/data=!4m6!3m5!1s0x8ea561b9aad2f2b5:0x445df4e43145f8d8!8m2!3d18.4607136!4d-69.9737794!16s%2Fg%2F11h02jktxc?hl=es-419" target="_blank">
+        <iframe class="map-embed" src="https://www.google.com/maps?q=18.4607136,-69.9737794&hl=es&z=17&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </a>
       <div class="sched-card">
         <h4>🕐 Horario de atención</h4>
         <div class="sched-row"><span class="sched-day">Lunes – Viernes</span><span class="sched-time">7:00 AM – 5:00 PM</span></div>
-        <div class="sched-row"><span class="sched-day">Sábado</span><span class="sched-time"style="background:#F1F5F9;color:#94A3B8">Cerrado</span></div>
+        <div class="sched-row"><span class="sched-day">Sábado</span><span class="sched-time" style="background:#F1F5F9;color:#94A3B8">Cerrado</span></div>
         <div class="sched-row"><span class="sched-day">Domingo</span><span class="sched-time" style="background:#F1F5F9;color:#94A3B8">Cerrado</span></div>
       </div>
     </div>
@@ -812,7 +822,7 @@
     </div>
     <div class="foot-col"><h4>Navegación</h4><ul><li><a href="#nosotros">Quiénes somos</a></li><li><a href="#programas">Programas</a></li><li><a href="#cuidado">Cuidado de niños</a></li><li><a href="#valores">Valores</a></li><li><a href="#testimonios">Testimonios</a></li><li><a href="#galeria">Galería</a></li></ul></div>
     <div class="foot-col"><h4>Programas</h4><ul><li><a href="#programas">Maternal</a></li><li><a href="#programas">Pre-Kínder</a></li><li><a href="#programas">Kínder</a></li><li><a href="#programas">Preparación Escolar</a></li><li><a href="#programas">Actividades Extra</a></li><li><a href="#programas">Cuido Extendido</a></li></ul></div>
-    <div class="foot-col"><h4>Contacto</h4><ul><li><a href="tel:8095550000">📞 (809) 730-3424</a></li><li><a href="mailto:centrosilera@gmail.com">✉️ centrosilera@gmail.com</a></li><li><a href="#contacto">📍 Guarocuya, Santo Domingo</a></li><li><a href="#contacto">🕐 Lun–Vie 7am–5pm</a></li><li><a href="#contacto">🕐 Sáb 8am–12pm</a></li></ul></div>
+    <div class="foot-col"><h4>Contacto</h4><ul><li><a href="tel:8097303424">📞 (809) 730-3424</a></li><li><a href="mailto:centrosilera@gmail.com">✉️ centrosilera@gmail.com</a></li><li><a href="#contacto">📍 Guarocuya, Santo Domingo</a></li><li><a href="#contacto">🕐 Lun–Vie 7am–5pm</a></li><li><a href="#contacto">🕐 Sáb Cerrado</a></li></ul></div>
   </div>
   <div class="foot-bottom">
     <p>© 2025 <strong>Centro Pedagógico Infantil Silera</strong>. Todos los derechos reservados.</p>

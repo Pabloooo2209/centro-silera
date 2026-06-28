@@ -104,7 +104,9 @@
     background:rgba(251,191,36,0.15); color:var(--yellow);
     padding:8px 18px; border-radius:50px; font-size:0.82rem; font-weight:700;
     margin-bottom:20px; border:1.5px solid rgba(251,191,36,0.35); width:fit-content;
+    transition:all 0.25s; cursor:pointer;
   }
+  .hero-badge:hover { background:rgba(251,191,36,0.25); transform:translateY(-1px); }
   .hero h1 { font-family:'Fredoka One',cursive; font-size:clamp(2.4rem,5vw,3.8rem); line-height:1.15; color:#fff; margin-bottom:22px; }
   .hero h1 .highlight { color:var(--coral); position:relative; display:inline-block; }
   .hero h1 .highlight::after {
@@ -127,6 +129,13 @@
     border:2px solid rgba(255,255,255,0.35); transition:all 0.3s; cursor:pointer;
   }
   .btn-outline:hover { background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.7); transform:translateY(-3px); }
+  .btn-outline-light {
+    background:transparent; color:var(--blue-main); padding:13px 28px; border-radius:50px;
+    font-family:'Nunito',sans-serif; font-weight:700; font-size:0.95rem;
+    text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+    border:2px solid var(--blue-main); transition:all 0.3s; cursor:pointer;
+  }
+  .btn-outline-light:hover { background:var(--blue-main); color:#fff; transform:translateY(-3px); box-shadow:0 8px 20px rgba(26,75,140,0.25); }
   .hero-stats { display:flex; gap:26px; margin-top:40px; flex-wrap:wrap; }
   .hero-stat { display:flex; flex-direction:column; }
   .hero-stat-num { font-family:'Fredoka One',cursive; font-size:1.9rem; color:var(--yellow); line-height:1; }
@@ -350,12 +359,22 @@
   .ci-item-text strong { display:block; font-size:0.83rem; font-weight:800; color:var(--blue-dark); }
   .ci-item-text span { font-size:0.8rem; color:var(--text-muted); }
   .map-embed-wrap {
-    display:block; position:relative; border-radius:18px; overflow:hidden;
-    box-shadow:0 4px 18px rgba(13,43,94,0.07); margin-bottom:20px;
-    border:1px solid var(--border); transition:all 0.3s;
+    position:relative; border-radius:18px; overflow:hidden;
+    box-shadow:0 4px 18px rgba(13,43,94,0.07); margin-bottom:12px;
+    border:1px solid var(--border);
   }
-  .map-embed-wrap:hover { box-shadow:var(--shadow); transform:translateY(-2px); }
-  .map-embed { width:100%; height:220px; border:0; display:block; pointer-events:none; }
+  .map-embed { width:100%; height:200px; border:0; display:block; }
+  .map-actions { display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap; }
+  .map-action-btn {
+    flex:1; min-width:150px; text-align:center;
+    background:#fff; color:var(--blue-main); text-decoration:none;
+    padding:11px 14px; border-radius:var(--radius-sm); font-size:0.83rem; font-weight:700;
+    box-shadow:0 2px 10px rgba(13,43,94,0.06); border:1.5px solid var(--blue-light);
+    transition:all 0.25s;
+  }
+  .map-action-btn:hover { background:var(--blue-main); color:#fff; transform:translateY(-2px); box-shadow:var(--shadow); }
+  .map-action-reviews { color:#B7791F; border-color:var(--yellow-light); }
+  .map-action-reviews:hover { background:var(--yellow); color:var(--blue-dark); border-color:var(--yellow); }
   .sched-card { background:#fff; border-radius:18px; padding:20px; box-shadow:0 4px 18px rgba(13,43,94,0.07); }
   .sched-card h4 { font-family:'Fredoka One',cursive; font-size:1.05rem; color:var(--blue-dark); margin-bottom:14px; display:flex; align-items:center; gap:7px; }
   .sched-row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--blue-xlight); font-size:0.85rem; }
@@ -479,7 +498,7 @@
   <div class="hero-orb orb3"></div>
   <div class="hero-content">
     <div class="reveal">
-      <div class="hero-badge">⭐ 4.8 estrellas · 54 opiniones en Google</div>
+      <a href="https://www.google.com/maps/place/Centro+pedagogico+infantil+silera/@18.4610525,-69.9742141,17.79z/data=!4m6!3m5!1s0x8ea561b9aad2f2b5:0x445df4e43145f8d8!8m2!3d18.4607136!4d-69.9737794!16s%2Fg%2F11h02jktxc?hl=es-419" target="_blank" class="hero-badge" style="text-decoration:none">⭐ 4.8 estrellas · 54 opiniones en Google</a>
       <h1>Donde cada niño<br>aprende a <span class="highlight">brillar</span></h1>
       <p class="hero-desc">El Centro Pedagógico Infantil Silera es un espacio de excelencia en la República Dominicana, dedicado al desarrollo integral de niños y niñas desde sus primeros años de vida.</p>
       <div class="hero-btns">
@@ -722,6 +741,7 @@
       <div class="section-label">💬 Opiniones</div>
       <h2 class="section-title">Lo que dicen las familias</h2>
       <p class="section-sub">Más de 54 familias han compartido su experiencia en Google.</p>
+      <a href="https://www.google.com/maps/place/Centro+pedagogico+infantil+silera/@18.4610525,-69.9742141,17.79z/data=!4m6!3m5!1s0x8ea561b9aad2f2b5:0x445df4e43145f8d8!8m2!3d18.4607136!4d-69.9737794!16s%2Fg%2F11h02jktxc?hl=es-419" target="_blank" class="btn-outline-light" style="margin-top:20px">⭐ Ver todas las opiniones en Google →</a>
     </div>
     <div class="test-grid">
       <div class="test-card reveal"><div class="t-stars">★★★★★</div><div class="t-q">"</div><div class="t-text">Mi hija lleva 2 años en Silera y el cambio ha sido increíble. Las maestras son muy atentas y siempre nos mantienen informados de su progreso.</div><div class="t-author"><div class="t-av" style="background:var(--coral)">MR</div><div><div class="t-name">María Rodríguez</div><div class="t-role">Mamá de Sofía, 4 años</div></div></div></div>
@@ -765,9 +785,13 @@
         <div class="ci-item"><div class="ci-ico" style="background:var(--green-light)">💬</div><div class="ci-item-text"><strong>WhatsApp</strong><span><a href="https://wa.me/18492202209?text=Quiero%20mas%20informacion%20sobre%3A%20" target="_blank" style="color:var(--text-muted);text-decoration:none">(849) 220-2209</a></span></div></div>
         <div class="ci-item"><div class="ci-ico" style="background:var(--yellow-light)">✉️</div><div class="ci-item-text"><strong>Email</strong><span><a href="mailto:centrosilera@gmail.com" style="color:var(--text-muted);text-decoration:none">centrosilera@gmail.com</a></span></div></div>
       </div>
-      <a class="map-embed-wrap" href="https://www.google.com/maps/place/Centro+pedagogico+infantil+silera/@18.4610525,-69.9742141,17.79z/data=!4m6!3m5!1s0x8ea561b9aad2f2b5:0x445df4e43145f8d8!8m2!3d18.4607136!4d-69.9737794!16s%2Fg%2F11h02jktxc?hl=es-419" target="_blank">
+      <div class="map-embed-wrap">
         <iframe class="map-embed" src="https://www.google.com/maps?q=18.4607136,-69.9737794&hl=es&z=17&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </a>
+      </div>
+      <div class="map-actions">
+        <a href="https://www.google.com/maps/dir/?api=1&destination=18.4607136,-69.9737794" target="_blank" class="map-action-btn">📍 Cómo llegar</a>
+        <a href="https://www.google.com/maps/place/Centro+pedagogico+infantil+silera/@18.4610525,-69.9742141,17.79z/data=!4m6!3m5!1s0x8ea561b9aad2f2b5:0x445df4e43145f8d8!8m2!3d18.4607136!4d-69.9737794!16s%2Fg%2F11h02jktxc?hl=es-419" target="_blank" class="map-action-btn map-action-reviews">⭐ Ver opiniones en Google</a>
+      </div>
       <div class="sched-card">
         <h4>🕐 Horario de atención</h4>
         <div class="sched-row"><span class="sched-day">Lunes – Viernes</span><span class="sched-time">7:00 AM – 5:00 PM</span></div>

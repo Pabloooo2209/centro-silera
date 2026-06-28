@@ -406,6 +406,13 @@
   .succ-ico { width:66px; height:66px; background:var(--green-light); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2.1rem; }
   .form-success h3 { font-family:'Fredoka One',cursive; font-size:1.45rem; color:var(--blue-dark); }
   .form-success p { font-size:0.88rem; color:var(--text-muted); }
+  .wa-success-btn {
+    display:inline-flex; align-items:center; gap:8px;
+    background:#25D366; color:#fff; text-decoration:none;
+    padding:13px 22px; border-radius:50px; font-weight:700; font-size:0.88rem;
+    box-shadow:0 6px 18px rgba(37,211,102,0.35); transition:all 0.3s;
+  }
+  .wa-success-btn:hover { background:#1EBE5A; transform:translateY(-2px); box-shadow:0 8px 22px rgba(37,211,102,0.45); }
 
   /* ===== FOOTER ===== */
   footer { background:var(--blue-dark); color:#fff; padding:60px 5% 28px; }
@@ -824,6 +831,7 @@
         <div class="succ-ico">✅</div>
         <h3>¡Solicitud enviada!</h3>
         <p>Gracias por contactarnos. Nos pondremos en contacto en menos de 24 horas. ¡Te esperamos!</p>
+        <a class="wa-success-btn" id="waSuccessBtn" href="#" target="_blank">💬 Enviar también por WhatsApp (respuesta más rápida)</a>
         <button class="btn-primary" onclick="resetForm()" style="margin-top:6px">Nueva consulta →</button>
       </div>
       <div class="form-success" id="formError">
@@ -884,6 +892,21 @@
   function toggleMenu() { document.getElementById('mobileNav').classList.toggle('open'); }
   function closeMenu() { document.getElementById('mobileNav').classList.remove('open'); }
 
+  function buildWhatsAppMessage(payload) {
+    const lines = [
+      '👋 Nueva solicitud de información - Centro Silera',
+      '',
+      `*Nombre:* ${payload['Nombre del padre/madre'] || '-'}`,
+      `*Teléfono:* ${payload['Teléfono'] || '-'}`,
+      `*Correo:* ${payload['Correo electrónico'] || '-'}`,
+      `*Niño/a:* ${payload['Nombre del niño/a'] || '-'}`,
+      `*Edad:* ${payload['Edad del niño/a'] || '-'}`,
+      `*Programa de interés:* ${payload['Programa de interés'] || '-'}`,
+      `*Mensaje:* ${payload['Mensaje'] || '-'}`
+    ];
+    return lines.join('\n');
+  }
+
   function submitForm(e) {
     e.preventDefault();
     const form = document.getElementById('contactForm');
@@ -893,6 +916,15 @@
 
     const formData = new FormData(form);
     const payload = Object.fromEntries(formData.entries());
+
+    // Pre-build the WhatsApp link with the form data (sent to the center's WhatsApp number)
+    const waText = buildWhatsAppMessage(payload);
+    const waUrl = 'https://wa.me/18492202209?text=' + encodeURIComponent(waText);
+
+    // Open a blank tab now (while still inside the click event) so popup blockers allow it,
+    // then point it to the WhatsApp link once we know the email sent successfully.
+    let waWindow = null;
+    try { waWindow = window.open('', '_blank'); } catch (err) { waWindow = null; }
 
     fetch('https://formsubmit.co/ajax/centrosilera@gmail.com', {
       method: 'POST',
@@ -909,9 +941,14 @@
     .then(() => {
       form.style.display = 'none';
       document.getElementById('formSuccess').classList.add('show');
+      document.getElementById('waSuccessBtn').href = waUrl;
+      if (waWindow) {
+        waWindow.location.href = waUrl;
+      }
     })
     .catch((err) => {
       console.error('Error enviando formulario:', err);
+      if (waWindow) { try { waWindow.close(); } catch (e) {} }
       form.style.display = 'none';
       document.getElementById('formError').classList.add('show');
     })
